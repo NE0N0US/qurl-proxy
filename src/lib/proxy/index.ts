@@ -105,11 +105,19 @@ export function createProxy(
 			{params, resbody, status, retry, retryIn, retryFactor, retryLimit, ttfb,
 				throttle, throttleUp, doRunCustom, timeout} = parseParams(searchParams),
 			consolePrefix = `[${consoleCounter || '*'}:${depth || '*'}:${attempt || '*'}] `
+		// check constraints
 		let recursion = parseRecursionHeader(req.headers)
 		if (recursion > config.proxyRecursionMax)
 			return await helpResponse(req, config, HttpStatus.LOOP_DETECTED,
 				`Proxy recursion limit of ${config.proxyRecursionMax} exceeded`
 			)
+		if (config.apiKeys?.length) {
+			const key = searchParams.get(SearchParam.KEY)
+			if (!key)
+				return await helpResponse(req, config, HttpStatus.UNAUTHORIZED, '401 Unauthorized')
+			if (!config.apiKeys.includes(key))
+				return await helpResponse(req, config, HttpStatus.FORBIDDEN, '403 Forbidden')
+		}
 		if (!searchParams.get(SearchParam.URL))
 			return await helpResponse(req, config, HttpStatus.BAD_REQUEST)
 		try {

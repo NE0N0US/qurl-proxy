@@ -107,7 +107,7 @@
       "purpose": "Explains the security model, intentional restrictions, and operational boundaries of qurl-proxy.",
       "page_notes": [
         {
-          "content": "Discuss the implications of an unauthenticated proxy, browser-header filtering, CORS bypass, sandbox isolation, recursion limits, batching limits, execution limits, timeout limits, denial-of-service considerations, statelessness, absence of authentication and caching, and situations where qurl-proxy is not an appropriate solution."
+          "content": "Discuss the implications of a proxy, browser-header filtering, CORS bypass, sandbox isolation, recursion limits, batching limits, execution limits, timeout limits, denial-of-service considerations, statelessness, absence of authentication and caching, and situations where qurl-proxy is not an appropriate solution."
         }
       ]
     },

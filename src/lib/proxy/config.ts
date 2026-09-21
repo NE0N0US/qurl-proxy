@@ -8,6 +8,7 @@ import {SearchDefaults} from './headers.ts'
 // #region - data
 
 export const vercelConfig = {
+	apiKeys: process.env.API_KEYS?.trim() ? process.env.API_KEYS.split(/[\s,;]+/g) : undefined,
 	// https://vercel.com/docs/functions/configuring-functions/duration#duration-limits
 	globalTimeout: +(process.env.GLOBAL_TIMEOUT || 300_000),
 	urlCountMax: +(process.env.URL_COUNT_MAX || 16),
@@ -23,6 +24,7 @@ export const vercelConfig = {
 
 export function configWithFallbacks(configInit?: Partial<ProxyConfig>): ProxyConfig {
 	return {
+		apiKeys: configInit?.apiKeys,
 		globalTimeout: configInit?.globalTimeout || 300_000,
 		urlCountMax: configInit?.urlCountMax || Number.MAX_SAFE_INTEGER,
 		proxyRecursionMax: configInit?.proxyRecursionMax || Number.MAX_SAFE_INTEGER,

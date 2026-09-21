@@ -75,6 +75,29 @@
 			:model-value="!!options$.qurlProxy.server.value && !options$.qurlProxy.server.disable"
 			header-class="hidden"
 		>
+			<q-input
+				class="list-item-input q-pa-toolbar"
+				spellcheck="false" autocomplete="off"
+				label="Key"
+				:shadow-text="options$.qurlProxy.key.value ? ' ' : 'API secret'"
+				autogrow
+				v-model="options$.qurlProxy.key.value"
+				:disable="!!(options$.qurlProxy.key.value && options$.qurlProxy.key.disable)"
+				borderless hide-bottom-space dense
+				input-class="artisan-mono"
+			>
+				<template #prepend>
+					<q-icon name="mdi-key-variant" color="text"/>
+				</template>
+				<template #after>
+					<q-checkbox
+						v-if="options$.qurlProxy.key.value"
+						v-model="options$.qurlProxy.key.disable"
+						:true-value="false" :false-value="true"
+						color="text"
+					/>
+				</template>
+			</q-input>
 			<q-separator/>
 			<q-input
 				class="list-item-input q-pa-toolbar"

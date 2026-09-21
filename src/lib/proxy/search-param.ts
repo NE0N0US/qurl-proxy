@@ -1,4 +1,5 @@
 export enum SearchParam {
+	KEY = 'key',
 	URL = 'url',
 	FASTEST = 'fastest',
 	HEADERS = 'headers',

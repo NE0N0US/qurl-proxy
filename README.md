@@ -1,9 +1,9 @@
 # qURL Proxy [![& qURL Artisan](https://badgen.net/static/client/qURL%20Artisan?icon=chrome)](https://qurl-proxy.vercel.app/qurl-artisan?open=about)
-**qURL Proxy** is an unauthenticated, non-caching, Node.js **HTTP(S) proxy** that supports batch requests and is [driven by URL query](#url-parameters). Headers, methods, bodies, and status codes can be overridden, and headers can also be deleted using wildcards. Responses can be transformed through *[custom JavaScript logic](#typescript-declaration-of-resbodyjavascript)*, which can chain requests and merge responses. *It also supports* retries with exponential backoff, timeouts, throttling and optional limits on request batching and recursion. By default it strips sensitive request headers and *bypasses CORS* response restrictions, useful for debugging and development. <sub>[Notes](#notes-) · [Examples](https://qurl-proxy.vercel.app/qurl-artisan?open=examples)</sub>
+**qURL Proxy** is a non-caching, Node.js **HTTP(S) proxy** that supports batch requests and is [driven by URL query](#url-parameters). Headers, methods, bodies, and status codes can be overridden, and headers can also be deleted using wildcards. Responses can be transformed through *[custom JavaScript logic](#typescript-declaration-of-resbodyjavascript)*, which can chain requests and merge responses. *It also supports* retries with exponential backoff, timeouts, throttling and optional limits on request batching and recursion. By default it strips sensitive request headers and *bypasses CORS* response restrictions, useful for debugging and development. <sub>[Notes](#notes-) · [Examples](https://qurl-proxy.vercel.app/qurl-artisan?open=examples)</sub>
 
 # Usage [![](https://badgen.net/npm/node/qurl-proxy?icon=nodedotjs)](https://nodejs.org/en/download)
 ## Server [![](https://badgen.net/packagephobia/install/qurl-proxy?icon=packagephobia)](https://packagephobia.com/result?p=qurl-proxy)
-- Public instance - `https://qurl-proxy.vercel.app/?url=…` or [clone](https://vercel.com/new/clone?repository-url=https://github.com/NE0N0US/qurl-proxy)
+- Public instance - [clone](https://vercel.com/new/clone?repository-url=https://github.com/NE0N0US/qurl-proxy)
 - Local instance - `npm start`
 - CLI instance (no client) - `npx -y qurl-proxy`
 
@@ -15,6 +15,7 @@ const response = await proxy(request)
 ```
 
 ## URL Parameters
+- `key` - API secret, if *required*
 - `url` - resource URL, `http` assumed, *required*, *repeatable* (max. `16`), first response used, other statuses in comma-separated `X-Proxy-Responses`
 - `fastest` - return first available response and its index in `X-Proxy-Responses`, abort others
 - `headers` - JSON or JSONCrush object of request headers to overwrite (`Host` is determined dynamically)

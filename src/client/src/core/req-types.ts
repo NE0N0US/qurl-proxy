@@ -66,6 +66,7 @@ export class ReqOptions {
 	integrityHashes: ReqV<string> = {disable: false, value: ''}
 	qurlProxy: {
 		server: ReqV<string>,
+		key: ReqV<string>,
 		urls: ReqV<string>,
 		fastest: boolean,
 		retry: string,
@@ -86,6 +87,7 @@ export class ReqOptions {
 		resBody: string,
 	} = {
 		server: {disable: true, value: AppService.resolveUrl('/')},
+		key: {disable: false, value: ''},
 		urls: {disable: false, value: ''},
 		fastest: false,
 		method: '',
@@ -157,7 +159,7 @@ async function getFullReqUrl(req: Req) {
 		const
 			url = AppService.resolveUrl(req.url),
 			{
-				server, urls,
+				server, key, urls,
 				fastest, renResHeaders, skipDefaults,
 				retry, retryIn, retryFactor, retryLimit,
 				timeout, ttfb, throttle, throttleUp,
@@ -168,6 +170,9 @@ async function getFullReqUrl(req: Req) {
 			params: [string, string][] = [[SearchParam.URL, url]]
 		if (server.disable || !server.value)
 			return url
+		// key
+		if (!key.disable && key.value)
+			params.push([SearchParam.KEY, key.value])
 		// urls
 		if (!urls.disable)
 			params.push(...urls.value

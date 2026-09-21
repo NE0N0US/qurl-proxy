@@ -53,6 +53,9 @@ export class ReqService {
 		// server
 		req.options.qurlProxy.server.disable = false
 		req.options.qurlProxy.server.value = serverUrl
+		// key
+		req.options.qurlProxy.key.disable = false
+		req.options.qurlProxy.key.value = url.searchParams.get(SearchParam.KEY) ?? ''
 		// urls
 		req.options.qurlProxy.urls.disable = false
 		req.options.qurlProxy.urls.value = urls.slice(1).join('\n')

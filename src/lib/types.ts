@@ -8,6 +8,7 @@ export type Bytes = Uint8Array<ArrayBuffer>
 export type Body = ReadableStream<Bytes> | null | undefined
 
 export interface ProxyConfig {
+	apiKeys?: string[]
 	/** default - `300_000` */
 	globalTimeout: number
 	/** default - `Number.MAX_SAFE_INTEGER` */
