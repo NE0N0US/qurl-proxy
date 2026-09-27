@@ -68,7 +68,7 @@ const
 			label: 'httpbin – HTML',
 			caption: 'Get a simple HTML document with an SRI check',
 			req: {
-				url: 'httpbin.org/html',
+				url: 'https://httpbin.org/html',
 				integrityHashes: 'sha512-VkjZaWWgcqf7UEkgobHl1eg8poEkebMMEhRkFu2XtM9jtLGsamBYvjqh/xUi+lgpUs+eT0WqWx3EY1B7gamXbQ==',
 			},
 		},
@@ -76,13 +76,13 @@ const
 			icon: 'mdi-hexadecimal',
 			label: 'httpbin – Random bytes',
 			caption: 'Get 64 KiB of random data',
-			req: 'httpbin.org/stream-bytes/65536',
+			req: 'https://httpbin.org/stream-bytes/65536',
 		},
 		{
 			icon: 'mdi-ip-outline',
 			label: 'httpbin – IP',
 			caption: 'Get your IP address',
-			req: 'httpbin.org/ip',
+			req: 'https://httpbin.org/ip',
 		},
 		{
 			icon: 'mdi-server-network-outline',

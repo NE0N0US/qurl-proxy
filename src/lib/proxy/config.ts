@@ -37,6 +37,7 @@ export function configWithFallbacks(configInit?: Partial<ProxyConfig>): ProxyCon
 export function proxyDebugResponse(req: Request, configInit: Partial<ProxyConfig>) {
 	return new Response(JSON.stringify({
 		...configWithFallbacks(configInit),
+		apiKeys: undefined,
 		cpuArch: os.arch(),
 		cpuEndianness: os.endianness(),
 		cpuParallelism: os.availableParallelism(),
